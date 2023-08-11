@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+    
+    const {useState} = React;
+    
+    function Header() {
+            return (
+                <h1>To do list</h1>
+            )
+        }
+    function Footer() {
+        
+        const onClickHandler = () => {
+            const changeProblems = problems.concat({
+                id: nextId,
+                title: inputText
+            });
+
+            setNextId(nextId + 1);
+            setProblems(changeProblems);
+            setInputText('');
+            console.log("추가 되었습니다")
+        }
+        
+        return (
+            <button onClick={onClickHandler}>추가</button>
+        )
+    }
+
+    function App() {
+    
+        const [problems, setProblems] = useState([
+            {id : 1, title: '할일 목록을 추가 할 것'}
+        ]);
+
+        const [inputText, setInputText] = useState('');
+        const [nextId, setNextId] = useState(2);
+
+        const onChangeHandler = e => setInputText(e.target.value);
+
+        const onRemove = id => {
+            console.log("클릭되었습니다")
+            const changeProblems = problems.filter(problem => problem.id !== id);
+            setProblems(changeProblems);
+        }
+
+        const problemList = problems.map(problem => <li key={problem.id}>{problem.title}  <button onClick={() => onRemove(problem.id)}>❌</button></li>);
+    
+        return (
+            <>
+                <ul>{problemList}</ul>
+                <input value={inputText} onChange={onChangeHandler}/>
+            </>
+        )
+
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(
+    <>
+    <Header/>    
+    <App/>
+    <Footer/>
+    </>
+        )
+    </script>
+</body>
+
+</html>

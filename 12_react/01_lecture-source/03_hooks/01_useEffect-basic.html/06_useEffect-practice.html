@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const { useState, useEffect } = React;
+
+        const AText = prompt('입력하세요');
+
+        function App() {
+
+
+            const [BText, setBText] = useState('');
+
+            const onChangeHandler = e => setBText(e.target.value);
+
+            useEffect(
+                () => {
+                    if (AText === BText) {
+                        console.log('일치합니다');
+                        alert('일치합니다')
+                    }
+                }
+            )
+
+            return (
+                <>
+                    <h1>{AText}</h1>
+                    <input type="text" name='Btext' onChange={onChangeHandler}
+                    />
+                </>
+            )
+
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <App />
+        );
+    </script>
+</body>
+
+</html>

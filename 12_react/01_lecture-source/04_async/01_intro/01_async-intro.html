@@ -1,0 +1,64 @@
+<!-- 
+    asynchronized  <===>  synchronized
+
+    sync => 동기화 하다.
+    async => 비동기화 하다.
+
+    동기?
+    A라는 task가 있고 B라는 task가 있을때
+    A가 끝나야 B가 작업이 가능하다. (동기 작업)
+
+    비동기?
+    A가 끝나지 않아도 B가 작업이 시작된다.
+
+    -------------------------------------------
+    비동기가 무조건 빠른건 아니다.
+    빠른 조건?
+    A의 task가 사용자의 입력이 필요한 시간과 같은 남는 시간에 B를 작업하면 빠르게 작업을 끝낼수있음
+    A는 5초 실행되야하는데 중간에 2초정도 사용자 입력을 받아야함
+    B는 2초만 실행되면됨
+
+    <동기>    :  AA  AAABB
+    <비동기>  :  AABBAAA
+
+    동기
+    비동기
+    블락
+    넌블락
+
+    Node Js의 거의 모든 API는 non block
+
+    API
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 동기작업과 비동기 작업
+            동기 작업 : 하나의 작업을 실행하고 마친 뒤 처리된 결과를 이용해(혹은 리턴 값이 없을 수 있음)
+                        다음 작업을 순차적으로 실행함 (블로킹과 유사)
+            비동기작업 : 메인 흐름은 멈추지 않는 상태에서 특정 작어븡ㄹ 백그라운드에서 처리하여 마치 
+                        동시에 처리되는 것 처럼 실행함 (논블로킹과 유사) 이전 함수의 호출 결과가 다음 함수에 반영되지 않음
+        */
+
+        function sayHello() {
+            console.log('Hello world!');
+            
+            for(let i = 0; i < 99999999; i++) {}
+        }
+
+        // sayHello();
+        // console.log('end');
+
+        setTimeout(sayHello, 3000);
+        console.log('end');
+        
+    </script>
+</body>
+</html>

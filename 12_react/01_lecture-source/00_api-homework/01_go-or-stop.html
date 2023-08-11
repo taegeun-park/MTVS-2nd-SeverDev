@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const { useState } = React;
+
+        const API_KEY = 'RGAPI-2dec5d00-b94b-448c-89cd-3b859180d399';
+
+        
+
+        function SearchUserId() {
+
+            const [userNick, setUserNick] = useState('');
+
+            const onChangeHandler = e => {
+                setUserNick(e.target.value);
+            };
+
+            const onClickHandler = () => {
+                axios.get(`https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/${userNick}?api_key=${API_KEY}`)
+                    .then(res => 
+                    // res.data.id를 넘겨줘야함
+                    console.log(res.data.id))
+            }
+
+            return (
+                <>
+                    <input onChange={onChangeHandler} value={userNick} />
+                    <button onClick={onClickHandler}>Search</button>
+                </>
+            )
+        }
+
+        function SearchUserMostChampList({userId}) {
+
+            const [userChamp, setUserChamp] = useState([]);
+
+            useEffect(
+                () => {
+                    fetch(`https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${userId}/top?count=5`)
+                    .then(res => console.log(res))
+                },
+                []
+            )
+
+        }
+
+        function App() {
+            SearchUserNick()
+
+            return (
+                <>
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<SearchUserId />)
+    </script>
+</body>
+
+</html>
