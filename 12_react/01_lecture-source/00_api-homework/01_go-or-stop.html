@@ -47,10 +47,11 @@
         function SearchUserMostChampList({userId}) {
 
             const [userChamp, setUserChamp] = useState([]);
-
+            //useEffect는 state의 변화가 일어나면 랜더링이된다. 
+            //
             useEffect(
                 () => {
-                    fetch(`https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${userId}/top?count=5`)
+                    axios.get(`https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${userId}/top?count=5`)
                     .then(res => console.log(res))
                 },
                 []
