@@ -1,13 +1,9 @@
 import { useEffect, useState} from "react";
+import Pokedex from "../data/Pokedex";
 
 function PokemonInfo() {
 
-    const [pokeList, setPokeList] = useState([]);
-    useEffect(
-        () => {
-            setPokeList(Pokedex())
-        }
-    )
+    Pokedex
 
     return (
         <>
