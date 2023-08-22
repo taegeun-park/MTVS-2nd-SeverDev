@@ -7,6 +7,7 @@ app.use((request, response, next) => {
     // response.send('<h1>Hello World!</h1>');
     // response.send('Hello World2!');
     response.send({
-        {id: },
+    
+        message: 'Hello World!'
     });
 });

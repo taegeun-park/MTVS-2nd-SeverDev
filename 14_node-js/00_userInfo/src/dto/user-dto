@@ -1,0 +1,19 @@
+class UserDTO {
+    userId;
+    nickname;
+    email;
+    account;
+    password;
+    online;
+
+    constructor(data) {
+        this.userId = data.userId;
+        this.nickname = data.nickname;
+        this.email = data.email;
+        this.account = data.account;
+        this.password = data.password;
+        this.online = data.online;
+    }
+}
+
+module.exports = UserDTO;

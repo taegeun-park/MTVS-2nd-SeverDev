@@ -1,0 +1,26 @@
+[
+    {
+        "userId": 1,
+        "nickname": "user1",
+        "eamil": "user1@example.com",
+        "account": "11Account",
+        "password": "passwrod",
+        "online": 0
+    },
+    {
+        "userId": 2,
+        "nickname": "user2",
+        "eamil": "user2@example.com",
+        "account": "22textAccount",
+        "password": "passwrod",
+        "online": 1
+    },
+    {
+        "userId": 3,
+        "nickname": "user3",
+        "eamil": "user3@example.com",
+        "account": "33textAccount",
+        "password": "passwrod",
+        "online": 1
+    }
+]
